@@ -1,0 +1,9 @@
+nav ul li {
+  list-style-type: none;
+}
+
+.item {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,28 @@
+.imgIntro {
+  height: 200px;
+  background-color: aqua;
+  background-image: url(https://wikiway.com/upload/hl-photo/ead/077/karibskoe-more_221.jpg);
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  margin-bottom: 20px;
+}
+
+.prefyu {
+ display:flex;
+ margin-bottom: 20px;
+}
+
+.ava {
+  width: 100px;
+}
+
+.brdSilver {
+  border: 2px solid silver;
+}
+
+.description {
+  margin-left: 20px;
+}
+
+.description h3 {margin: 0}

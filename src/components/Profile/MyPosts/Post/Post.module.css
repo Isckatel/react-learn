@@ -1,0 +1,13 @@
+.post {
+  margin-bottom: 20px;
+}
+
+.post img {
+  float: left;
+  width: 70px;
+  margin-right: 7px;
+}
+
+.textPost {
+  color: brown;
+}
