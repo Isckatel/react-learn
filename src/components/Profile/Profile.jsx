@@ -3,7 +3,7 @@ import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
   return(
-    <div className="main" className="white-block">
+    <div className="main">
       <div className={css.imgIntro}>
       </div>
       <div className={css.prefyu}>

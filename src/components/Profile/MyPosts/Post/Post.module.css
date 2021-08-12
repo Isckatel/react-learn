@@ -1,9 +1,9 @@
 .post {
+  display: flex;
   margin-bottom: 20px;
 }
 
 .post img {
-  float: left;
   width: 70px;
   margin-right: 7px;
 }

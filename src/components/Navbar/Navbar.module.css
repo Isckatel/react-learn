@@ -1,9 +1,19 @@
+nav {
+  height: 100vh;
+}
+
 nav ul li {
   list-style-type: none;
+  margin: 8px 0;
 }
 
 .item {
   font-size: 18px;
   text-decoration: none;
   color: black;
+
+}
+
+.item.active {
+  font-weight: bold;
 }
