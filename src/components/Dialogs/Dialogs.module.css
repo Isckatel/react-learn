@@ -1,0 +1,35 @@
+.dialogs {
+  display:flex;
+}
+
+.dialogsItems {
+  flex: 1 0 auto;
+  padding: 10px;
+  border-right: 1px solid deepskyblue ;
+  height: 100vh;
+}
+
+.dialogsItems .dialog {
+  display: block;
+  text-decoration: none;
+  padding: 8px 0;
+  color: black;
+}
+
+.dialogsItems .active {
+  font-weight: bold;
+  color: black;
+}
+
+.messages {
+  flex: 5 0 auto;
+  padding: 10px;
+}
+
+.message {
+  margin: 8px;
+  padding: 4px;
+  background: azure;
+  border-radius: 10px;
+
+}
