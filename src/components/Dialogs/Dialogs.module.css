@@ -4,6 +4,7 @@
 
 .dialogsItems {
   flex: 1 0 auto;
+  min-width: 180px; 
   padding: 10px;
   border-right: 1px solid deepskyblue ;
   height: 100vh;
@@ -22,7 +23,7 @@
 }
 
 .messages {
-  flex: 5 0 auto;
+  flex: 4 0 auto;
   padding: 10px;
 }
 

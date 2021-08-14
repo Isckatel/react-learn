@@ -1,9 +1,9 @@
 import css from "./Profile.module.css";
 import MyPosts from './MyPosts/MyPosts';
 
-const Profile = () => {
-  return(
-    <div className="main">
+const ProfileInfo = () => {
+  return (
+    <div>
       <div className={css.imgIntro}>
       </div>
       <div className={css.prefyu}>
@@ -11,10 +11,18 @@ const Profile = () => {
         <div className={css.description}>
           <h3>Ivan E</h3>
           <p>Здесь всякая информация о профиле</p>
+          </div>
         </div>
-      </div>
+    </div>
+  );
+}
 
-      <MyPosts />
+const Profile = (props) => {
+  return(
+    <div className="main">
+
+      <ProfileInfo />
+      <MyPosts postData = {props.profilePage.postData}/>
 
     </div>
   );
