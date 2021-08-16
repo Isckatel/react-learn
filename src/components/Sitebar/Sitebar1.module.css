@@ -1,0 +1,18 @@
+.h {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.frends {
+  display: flex;
+}
+
+.frend {
+  margin-right: 7px;
+}
+
+.imgAva {
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+}

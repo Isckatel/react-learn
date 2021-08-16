@@ -1,10 +1,10 @@
-import css from "./Sitebar.module.css";
+import css from "./Sitebar1.module.css";
 
 const Sitebar = (props) => {
 
   let frendsElem = props.sitebar.map( (frend) => {
     return (
-      <div>
+      <div className={css.frend}>
         <img className={css.imgAva} src={frend.urlAva} />
         <div>{frend.name}</div>
       </div>
@@ -13,7 +13,7 @@ const Sitebar = (props) => {
 
   return(
     <div>
-      <p>Frends</p>
+      <p className={css.h}>Frends</p>
       <div className={css.frends}>
         {frendsElem}
       </div>
