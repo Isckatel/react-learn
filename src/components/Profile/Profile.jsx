@@ -20,10 +20,8 @@ const ProfileInfo = () => {
 const Profile = (props) => {
   return(
     <div className="main">
-
       <ProfileInfo />
       <MyPosts postData = {props.profilePage.postData}/>
-
     </div>
   );
 }
