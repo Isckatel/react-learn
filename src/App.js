@@ -13,7 +13,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar />
+        <Navbar sitebar={props.state.sitebar}/>
         <div className="white-block">
           <Route path="/dialogs" render={()=><Dialogs messagesPage={props.state.messagesPage}/>}/>
           <Route path="/profile" render={()=><Profile profilePage={props.state.profilePage}/>}/>
