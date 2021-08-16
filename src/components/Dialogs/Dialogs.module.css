@@ -4,10 +4,19 @@
 
 .dialogsItems {
   flex: 1 0 auto;
-  min-width: 180px; 
+  min-width: 180px;
   padding: 10px;
   border-right: 1px solid deepskyblue ;
   height: 100vh;
+}
+
+ .dialogsItems .imgAva {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  top: 13px;
+  margin-right: 7px;
 }
 
 .dialogsItems .dialog {
@@ -25,12 +34,19 @@
 .messages {
   flex: 4 0 auto;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .message {
   margin: 8px;
   padding: 4px;
-  background: azure;
+  background:bisque;
   border-radius: 10px;
+  width: 70%;
+}
 
+.mesRight {
+  align-self: flex-end;
+  background-color: aquamarine;
 }
