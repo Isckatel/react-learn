@@ -7,7 +7,8 @@ const MyPosts = (props) => {
   let postsElem = props.postData.map ( (p) => <Post massage={p.massage}/> );
 
   const addPost = ()=>{
-    alert(newPostElement.current.value);
+    props.addPost(newPostElement.current.value);
+    //alert(newPostElement.current.value);
   }
 
   return(

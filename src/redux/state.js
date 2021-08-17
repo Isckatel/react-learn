@@ -26,4 +26,14 @@ let state = {
   ]
 }
 
+export let addPost = (postMessage) => {
+  let newPost = {
+    id:5,
+    massage: postMessage
+  };
+
+  state.profilePage.postData.push(newPost);
+}
+
+
 export default state;

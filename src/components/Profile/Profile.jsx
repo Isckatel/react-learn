@@ -21,7 +21,7 @@ const Profile = (props) => {
   return(
     <div className="main">
       <ProfileInfo />
-      <MyPosts postData = {props.profilePage.postData}/>
+      <MyPosts postData = {props.profilePage.postData} addPost={props.addPost}/>
     </div>
   );
 }
