@@ -7,14 +7,19 @@ const MyPosts = (props) => {
   let postsElem = props.postData.map ( (p) => <Post massage={p.massage}/> );
 
   const addPost = ()=>{
-    props.addPost(newPostElement.current.value);
-    //alert(newPostElement.current.value);
+    props.addPost();
+    //props.updateNewPostText('');
+  }
+
+  const onPostChange = ()=>{
+    props.updateNewPostText(newPostElement.current.value);
   }
 
   return(
       <div className={css.posts}>
         <div className={css.newpost}>
-            <textarea ref={newPostElement}></textarea>
+            <textarea ref={newPostElement} onChange={onPostChange}
+              value={props.newPostText} />
             <button onClick={addPost}>Добавить запись</button>
         </div>
         {postsElem}

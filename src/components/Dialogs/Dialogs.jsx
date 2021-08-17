@@ -24,9 +24,14 @@ const Dialogs = (props) => {
   let messageElements = props.messagesPage.messageData.map( message => <Message message={message.massage} who={message.who}/>);
 
   let newMess = React.createRef();
+
   const addMess = ()=>{
-    alert(newMess.current.value);
+    props.addMess();
   };
+
+  const updateNewMessText = () => {
+    props.updateNewMessText(newMess.current.value);
+  }
 
   return(
     <div className={css.dialogs}>
@@ -35,7 +40,7 @@ const Dialogs = (props) => {
       </div>
       <div className={css.messages}>
         {messageElements}
-        <textarea ref={newMess}></textarea>
+        <textarea ref={newMess} value={props.messagesPage.newMessageText} onChange={updateNewMessText}></textarea>
         <button className={css.btnSend} onClick={addMess}>Отправить</button>
       </div>
 
