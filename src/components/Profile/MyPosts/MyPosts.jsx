@@ -7,13 +7,13 @@ const MyPosts = (props) => {
   let postsElem = props.postData.map ( (p) => <Post massage={p.massage}/> );
 
   const addPost = ()=>{
-    debugger;
-    props.addPost();
-    //props.updateNewPostText('');
+    //props.addPost();
+    props.dispatch({type:'ADD-POST'});
   }
 
   const onPostChange = ()=>{
-    props.updateNewPostText(newPostElement.current.value);
+    //props.updateNewPostText(newPostElement.current.value);
+    props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: newPostElement.current.value});
   }
 
   return(

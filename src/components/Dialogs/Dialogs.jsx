@@ -26,11 +26,12 @@ const Dialogs = (props) => {
   let newMess = React.createRef();
 
   const addMess = ()=>{
-    props.addMess();
+    props.dispatch({type:'ADD-MESS'});
   };
 
   const updateNewMessText = () => {
-    props.updateNewMessText(newMess.current.value);
+    //props.updateNewMessText(newMess.current.value);
+    props.dispatch({type:'UPDATE-NEW-MESS-TEXT', newText:newMess.current.value})
   }
 
   return(

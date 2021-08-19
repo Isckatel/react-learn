@@ -39,8 +39,35 @@ let store = {
     this.rerenderEntireTree = observer;
   },
 
-  addPost() {
+  dispatch(action) {
     debugger;
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id:5,
+        massage: this._state.profilePage.newPostText,
+      };
+      this._state.profilePage.postData.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this.rerenderEntireTree(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText;
+      this.rerenderEntireTree(this._state);
+    } else if (action.type === 'UPDATE-NEW-MESS-TEXT') {
+      this._state.messagesPage.newMessageText = action.newText;
+      this.rerenderEntireTree(this._state);
+    } else if (action.type === 'ADD-MESS') {
+      let newMess = {
+        id:5,
+        massage: this._state.messagesPage.newMessageText,
+        who: 'i'
+      };
+      this._state.messagesPage.messageData.push(newMess);
+      this._state.messagesPage.newMessageText = '';
+      this.rerenderEntireTree(this._state);
+    }
+  },
+
+  addPost() {
     let newPost = {
       id:5,
       massage: this._state.profilePage.newPostText,

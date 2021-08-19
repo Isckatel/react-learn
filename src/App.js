@@ -16,12 +16,10 @@ const App = (props) => {
         <Navbar sitebar={props.state.sitebar}/>
         <div className="white-block">
           <Route path="/dialogs" render={()=><Dialogs messagesPage = {props.state.messagesPage}
-                                                      addMess = {props.addMess}
-                                                      updateNewMessText ={props.updateNewMessText}/>}/>
+                                                      dispatch =     {props.dispatch}/>}/>
 
-          <Route path="/profile" render={()=><Profile profilePage =       {props.state.profilePage}
-                                                      addPost =           {props.addPost}
-                                                      updateNewPostText = {props.updateNewPostText}/>}/>
+          <Route path="/profile" render={()=><Profile profilePage =  {props.state.profilePage}
+                                                      dispatch =     {props.dispatch}/>}/>
           <Route path="/music" component={Music}/>
           <Route path="/news" component={News}/>
           <Route path="/settings" component={Settings}/>
