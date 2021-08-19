@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESS = 'ADD-MESS';
-const UPDATE_NEW_MESS_TEXT = 'UPDATE-NEW-MESS-TEXT';
+import profileReducer from './profile-reducer.jsx';
+import dialogsReducer from './dialogs-reducer.jsx';
+import sitebarReducer from './sitebar-reducer.jsx';
 
 let store = {
   _state: {
@@ -44,77 +43,14 @@ let store = {
     this.rerenderEntireTree = observer;
   },
 
-  dispatch(action) {  
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id:5,
-        massage: this._state.profilePage.newPostText,
-      };
-      this._state.profilePage.postData.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this.rerenderEntireTree(this._state);
-
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this.rerenderEntireTree(this._state);
-
-    } else if (action.type === UPDATE_NEW_MESS_TEXT) {
-      this._state.messagesPage.newMessageText = action.newText;
-      this.rerenderEntireTree(this._state);
-
-    } else if (action.type === ADD_MESS) {
-      let newMess = {
-        id:5,
-        massage: this._state.messagesPage.newMessageText,
-        who: 'i'
-      };
-      this._state.messagesPage.messageData.push(newMess);
-      this._state.messagesPage.newMessageText = '';
-      this.rerenderEntireTree(this._state);
-    }
-  },
-
-  addPost() {
-    let newPost = {
-      id:5,
-      massage: this._state.profilePage.newPostText,
-    };
-    this._state.profilePage.postData.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this.rerenderEntireTree(this._state);
-  },
-
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this.rerenderEntireTree(this._state);
-  },
-
-  updateNewMessText(newText) {
-    this._state.messagesPage.newMessageText = newText;
-    this.rerenderEntireTree(this._state);
-  },
-
-  addMess() {
-    let newMess = {
-      id:5,
-      massage: this._state.messagesPage.newMessageText,
-      who: 'i'
-    };
-    this._state.messagesPage.messageData.push(newMess);
-    this._state.messagesPage.newMessageText = '';
+  dispatch(action) {
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
+    this._state.sitebar = sitebarReducer(this._state.sitebar, action);
     this.rerenderEntireTree(this._state);
   }
-
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST});
 
-export const updateNewPostTextActionCreator = (text) => {
-  return { type: UPDATE_NEW_POST_TEXT, newText: text }
-}
-
-export const addMessActionCreator = () => ({type: ADD_MESS});
-
-export const updateNewMessTextActionCreator = (text) => ({ type: UPDATE_NEW_MESS_TEXT, newText: text })
 
 export default store;

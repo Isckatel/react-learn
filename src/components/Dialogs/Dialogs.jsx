@@ -1,7 +1,7 @@
 import React from 'react';
 import css from "./Dialogs.module.css";
 import {NavLink} from "react-router-dom";
-import {addMessActionCreator, updateNewMessTextActionCreator} from "../../redux/state";
+import {addMessActionCreator, updateNewMessTextActionCreator} from "../../redux/dialogs-reducer";
 
 const DialogItem = (props)=> {
   return (
