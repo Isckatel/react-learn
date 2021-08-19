@@ -1,6 +1,7 @@
 import React from 'react';
 import css from "./Dialogs.module.css";
 import {NavLink} from "react-router-dom";
+import {addMessActionCreator, updateNewMessTextActionCreator} from "../../redux/state";
 
 const DialogItem = (props)=> {
   return (
@@ -26,12 +27,12 @@ const Dialogs = (props) => {
   let newMess = React.createRef();
 
   const addMess = ()=>{
-    props.dispatch({type:'ADD-MESS'});
+    props.dispatch(addMessActionCreator());
   };
 
   const updateNewMessText = () => {
     //props.updateNewMessText(newMess.current.value);
-    props.dispatch({type:'UPDATE-NEW-MESS-TEXT', newText:newMess.current.value})
+    props.dispatch(updateNewMessTextActionCreator(newMess.current.value));
   }
 
   return(

@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESS = 'ADD-MESS';
+const UPDATE_NEW_MESS_TEXT = 'UPDATE-NEW-MESS-TEXT';
+
 let store = {
   _state: {
     profilePage:{
@@ -39,9 +44,8 @@ let store = {
     this.rerenderEntireTree = observer;
   },
 
-  dispatch(action) {
-    debugger;
-    if (action.type === 'ADD-POST') {
+  dispatch(action) {  
+    if (action.type === ADD_POST) {
       let newPost = {
         id:5,
         massage: this._state.profilePage.newPostText,
@@ -49,13 +53,16 @@ let store = {
       this._state.profilePage.postData.push(newPost);
       this._state.profilePage.newPostText = '';
       this.rerenderEntireTree(this._state);
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText;
       this.rerenderEntireTree(this._state);
-    } else if (action.type === 'UPDATE-NEW-MESS-TEXT') {
+
+    } else if (action.type === UPDATE_NEW_MESS_TEXT) {
       this._state.messagesPage.newMessageText = action.newText;
       this.rerenderEntireTree(this._state);
-    } else if (action.type === 'ADD-MESS') {
+
+    } else if (action.type === ADD_MESS) {
       let newMess = {
         id:5,
         massage: this._state.messagesPage.newMessageText,
@@ -100,5 +107,14 @@ let store = {
 
 }
 
+export const addPostActionCreator = () => ({type: ADD_POST});
+
+export const updateNewPostTextActionCreator = (text) => {
+  return { type: UPDATE_NEW_POST_TEXT, newText: text }
+}
+
+export const addMessActionCreator = () => ({type: ADD_MESS});
+
+export const updateNewMessTextActionCreator = (text) => ({ type: UPDATE_NEW_MESS_TEXT, newText: text })
 
 export default store;
