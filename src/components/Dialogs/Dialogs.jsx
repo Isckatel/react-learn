@@ -1,7 +1,6 @@
 import React from 'react';
 import css from "./Dialogs.module.css";
 import {NavLink} from "react-router-dom";
-import {addMessActionCreator, updateNewMessTextActionCreator} from "../../redux/dialogs-reducer";
 
 const DialogItem = (props)=> {
   return (
@@ -19,20 +18,19 @@ const Message = (props)=> {
 
 const Dialogs = (props) => {
 
-  //let gialogsElements = dialogsData.map( d => <DialogItem name={d.name} id={d.id}/> );
-  //let gialogsElements = dialogsData.map( (d) => { <DialogItem name={d.name} id={d.id}/> });
   let gialogsElements = props.messagesPage.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} urlAva={dialog.urlAva}/> );
   let messageElements = props.messagesPage.messageData.map( message => <Message message={message.massage} who={message.who}/>);
 
   let newMess = React.createRef();
 
   const addMess = ()=>{
-    props.dispatch(addMessActionCreator());
+    props.addMess();
+    //props.dispatch(addMessActionCreator());
   };
 
   const updateNewMessText = () => {
-    //props.updateNewMessText(newMess.current.value);
-    props.dispatch(updateNewMessTextActionCreator(newMess.current.value));
+    props.updateNewMessText(newMess.current.value);
+    //props.dispatch(updateNewMessTextActionCreator(newMess.current.value));
   }
 
   return(
