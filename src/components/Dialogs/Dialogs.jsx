@@ -17,7 +17,7 @@ const Message = (props)=> {
 }
 
 const Dialogs = (props) => {
-
+  console.log(props)
   let gialogsElements = props.messagesPage.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} urlAva={dialog.urlAva}/> );
   let messageElements = props.messagesPage.messageData.map( message => <Message message={message.massage} who={message.who}/>);
 

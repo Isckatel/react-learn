@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Header  from './components/Header/Header';
 import Navbar  from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
@@ -8,22 +8,22 @@ import Settings from './components/Settings/Settings';
 import News    from './components/News/News';
 import Music   from './components/Music/Music';
 
-const App = (props) => {
+
+const App = () => {
   return (
-    <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
-        <Navbar sitebar={props.state.sitebar}/>
+      <Header />
+        <Navbar />
         <div className="white-block">
-          <Route path="/dialogs" render={()=><DialogsContainer store = {props.store}/>}/>
-          <Route path="/profile" render={()=><Profile store = {props.store}/>}/>
+          <Route path="/dialogs" render={()=><DialogsContainer />}/>
+          <Route path="/profile" render={()=><Profile />}/>
           <Route path="/music" component={Music}/>
           <Route path="/news" component={News}/>
           <Route path="/settings" component={Settings}/>
         </div>
       </div>
-    </BrowserRouter>
   );
 }
+
 
 export default App;
