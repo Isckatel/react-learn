@@ -18,8 +18,8 @@ const Message = (props)=> {
 
 const Dialogs = (props) => {
   console.log(props)
-  let gialogsElements = props.messagesPage.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} urlAva={dialog.urlAva}/> );
-  let messageElements = props.messagesPage.messageData.map( message => <Message message={message.massage} who={message.who}/>);
+  let gialogsElements = props.messagesPage.dialogsData.map( dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id} urlAva={dialog.urlAva}/> );
+  let messageElements = props.messagesPage.messageData.map( message => <Message message={message.massage} key={message.id} who={message.who}/>);
 
   let newMess = React.createRef();
 
