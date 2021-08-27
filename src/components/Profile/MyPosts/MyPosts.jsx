@@ -4,7 +4,6 @@ import Post from "./Post/Post";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
-  debugger;
   let newPostElement = React.createRef();
   let postsElem = props.postData.map ( (p) => <Post massage={p.massage}/> );
 
