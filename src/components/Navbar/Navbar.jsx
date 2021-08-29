@@ -1,6 +1,6 @@
 import classes from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import  Sitebar from "./../Sitebar/Sitebar";
+import  SitebarContainer from "./../Sitebar/SitebarContainer";
 
 const Navbar = (props) => {
   return(
@@ -12,7 +12,7 @@ const Navbar = (props) => {
         <li><NavLink to="/music" activeClassName={classes.active} className={classes.item}>Music</NavLink></li>
         <li><NavLink to="/settings" activeClassName={classes.active} className={classes.item}><br/>Settings</NavLink></li>
       </ul>
-    {/*<Sitebar sitebar={props.sitebar} />*/}
+    <SitebarContainer />
     </nav>
   );
 }

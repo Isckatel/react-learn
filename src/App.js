@@ -7,6 +7,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Settings from './components/Settings/Settings';
 import News    from './components/News/News';
 import Music   from './components/Music/Music';
+import UsersContainer   from './components/Users/UsersContainer';
 
 
 const App = () => {
@@ -15,11 +16,12 @@ const App = () => {
       <Header />
         <Navbar />
         <div className="white-block">
-          <Route path="/dialogs" render={()=><DialogsContainer />}/>
-          <Route path="/profile" render={()=><Profile />}/>
-          <Route path="/music" component={Music}/>
-          <Route path="/news" component={News}/>
-          <Route path="/settings" component={Settings}/>
+          <Route path="/dialogs" render={ () => <DialogsContainer/> } />
+          <Route path="/profile" render={ () => <Profile/> } />
+          <Route path="/users"   render={ () => <UsersContainer/> } />
+          <Route path="/music" component={Music} />
+          <Route path="/news" component={News} />
+          <Route path="/settings" component={Settings} />
         </div>
       </div>
   );

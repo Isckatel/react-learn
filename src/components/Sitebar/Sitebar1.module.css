@@ -3,6 +3,16 @@
   margin-bottom: 10px;
 }
 
+.aheading {
+  text-decoration: none;
+  color: black;
+}
+
+.aheading.activ {
+  color:black;
+}
+
+
 .frends {
   display: flex;
 }
