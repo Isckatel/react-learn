@@ -23,7 +23,7 @@ let Users = (props) => {
             <div key={u.id}>
               <span>
                 <div>
-                  <img src={u.photos.small != null ? u.photos.small: userPhoto} />
+                  <img src={u.photos.small != null ? u.photos.small : userPhoto} />
                 </div>
                 <div>
                   {u.followed ? <button onClick={()=>{props.unfollow(u.id)}}>Unfollow</button>
