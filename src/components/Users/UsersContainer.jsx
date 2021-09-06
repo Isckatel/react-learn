@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import  Users from './Users';
 import * as axios from 'axios';
 import loader from '../../assets/img/oval.svg';
-import {followAC, unfollowAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC, setIsFetchingAC} from "../../redux/users-reducer";
+import {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching} from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -51,27 +51,28 @@ let mapStateToProps = (state) => {
     isFetching: state.usersPage.isFetching
   }
 }
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (id)=>{
-      dispatch(followAC(id))
-    },
-    unfollow:(id)=>{
-      dispatch(unfollowAC(id))
-    },
-    setUsers: (users_)=>{
-      dispatch(setUsersAC(users_));
-    },
-    setCurrentPage: (currentPage_)=>{
-      dispatch(setCurrentPageAC(currentPage_))
-    },
-    setTotalUsersCount: (totalCount)=>{
-      dispatch(setTotalUsersCountAC(totalCount))
-    },
-    setIsFetching: (isFetching)=>{
-      dispatch(setIsFetchingAC(isFetching))
-    }
-  }
-}
+// let mapDispatchToProps = (dispatch) => {
+//   return {
+//     follow: (id)=>{
+//       dispatch(followAC(id))
+//     },
+//     unfollow:(id)=>{
+//       dispatch(unfollowAC(id))
+//     },
+//     setUsers: (users_)=>{
+//       dispatch(setUsersAC(users_));
+//     },
+//     setCurrentPage: (currentPage_)=>{
+//       dispatch(setCurrentPageAC(currentPage_))
+//     },
+//     setTotalUsersCount: (totalCount)=>{
+//       dispatch(setTotalUsersCountAC(totalCount))
+//     },
+//     setIsFetching: (isFetching)=>{
+//       dispatch(setIsFetchingAC(isFetching))
+//     }
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps,
+  {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching})(UsersContainer);
