@@ -1,29 +1,24 @@
 import css from "./Profile.module.css";
-import MyPostsContainer from './MyPosts/MyPostsContainer';
+import loader from '../../assets/img/oval.svg';
 
-const ProfileInfo = () => {
-  return (
-    <div>
-      <div className={css.imgIntro}>
-      </div>
-      <div className={css.prefyu}>
-        <img className={`${css.ava} ${css.brdSilver}`} src="https://pbs.twimg.com/profile_images/433687863247790082/uXU1HydH.jpeg" />
-        <div className={css.description}>
-          <h3>Ivan E</h3>
-          <p>Здесь всякая информация о профиле</p>
-          </div>
+const ProfileInfo = (props) => {
+  if (props.profile == null || props.profile == undefined) {
+    return <img src={loader} />
+  } else {
+    return (
+      <div>
+        <div className={css.imgIntro}>
         </div>
-    </div>
-  );
+        <div className={css.prefyu}>
+          <img className={`${css.ava} ${css.brdSilver}`} src={props.profile.photos.small} />
+          <div className={css.description}>
+            <h3>{props.profile.fullName}</h3>
+            <p>{props.profile.aboutMe}</p>
+            </div>
+          </div>
+      </div>
+    );
+  }
 }
 
-const Profile = (props) => {
-  return(
-    <div className="main">
-      <ProfileInfo />
-      <MyPostsContainer store = {props.store} />
-    </div>
-  );
-}
-
-export default Profile;
+export default ProfileInfo;

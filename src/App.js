@@ -2,7 +2,7 @@ import './App.css';
 import {Route} from "react-router-dom";
 import Header  from './components/Header/Header';
 import Navbar  from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Settings from './components/Settings/Settings';
 import News    from './components/News/News';
@@ -17,7 +17,7 @@ const App = () => {
         <Navbar />
         <div className="white-block">
           <Route path="/dialogs" render={ () => <DialogsContainer/> } />
-          <Route path="/profile" render={ () => <Profile/> } />
+          <Route path="/profile" render={ () => <ProfileContainer/> } />
           <Route path="/users"   render={ () => <UsersContainer/> } />
           <Route path="/music" component={Music} />
           <Route path="/news" component={News} />
