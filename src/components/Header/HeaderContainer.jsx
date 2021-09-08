@@ -1,5 +1,5 @@
 import React from 'react';
-import * as axios from 'axios';
+import {authAPI} from '../../api/api';
 import {connect} from 'react-redux';
 import Header from './Header';
 import {setUserData} from "../../redux/auth-reducer";
@@ -7,12 +7,11 @@ import {setUserData} from "../../redux/auth-reducer";
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials:true})
-    .then(response=>{
-      if (response.data.resultCode === 0) {
-        this.props.setUserData(response.data.data);
+    authAPI.getAuth()
+    .then(data=>{
+      if (data.resultCode === 0) {
+        this.props.setUserData(data.data);
       }
-      //this.props.setUserProfile(response.data);
     });
   }
   render() {
