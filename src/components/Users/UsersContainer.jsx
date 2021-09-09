@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import  Users from './Users';
 import {userAPI} from '../../api/api';
 import loader from '../../assets/img/oval.svg';
-import {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching} from "../../redux/users-reducer";
+import {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, toggleFollowingProgress} from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -33,6 +33,8 @@ class UsersContainer extends React.Component {
                   users = {this.props.users}
                   follow = {this.props.follow}
                   unfollow = {this.props.unfollow}
+                  toggleFollowingProgress = {this.props.toggleFollowingProgress}
+                  followingInProgress = {this.props.followingInProgress}
       />
   </div>
   }
@@ -45,7 +47,8 @@ let mapStateToProps = (state) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     pageSize: state.usersPage.pageSize,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
   }
 }
 // let mapDispatchToProps = (dispatch) => {
@@ -72,4 +75,4 @@ let mapStateToProps = (state) => {
 // }
 
 export default connect(mapStateToProps,
-  {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching})(UsersContainer);
+  {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, toggleFollowingProgress})(UsersContainer);
