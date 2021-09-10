@@ -3,24 +3,16 @@ import {connect} from 'react-redux';
 import  Users from './Users';
 import {userAPI} from '../../api/api';
 import loader from '../../assets/img/oval.svg';
-import {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, toggleFollowingProgress} from "../../redux/users-reducer";
+import {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsersThunkCreator} from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data=>{
-      this.props.setIsFetching(false);
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount);
-    });
+    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
-    this.props.setIsFetching(true);
-    userAPI.getUsers(pageNumber, this.props.pageSize).then(data=>{
-      this.props.setIsFetching(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
   }
 
   render(){
@@ -51,28 +43,6 @@ let mapStateToProps = (state) => {
     followingInProgress: state.usersPage.followingInProgress
   }
 }
-// let mapDispatchToProps = (dispatch) => {
-//   return {
-//     follow: (id)=>{
-//       dispatch(followAC(id))
-//     },
-//     unfollow:(id)=>{
-//       dispatch(unfollowAC(id))
-//     },
-//     setUsers: (users_)=>{
-//       dispatch(setUsersAC(users_));
-//     },
-//     setCurrentPage: (currentPage_)=>{
-//       dispatch(setCurrentPageAC(currentPage_))
-//     },
-//     setTotalUsersCount: (totalCount)=>{
-//       dispatch(setTotalUsersCountAC(totalCount))
-//     },
-//     setIsFetching: (isFetching)=>{
-//       dispatch(setIsFetchingAC(isFetching))
-//     }
-//   }
-// }
 
 export default connect(mapStateToProps,
-  {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, toggleFollowingProgress})(UsersContainer);
+  {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsersThunkCreator})(UsersContainer);
