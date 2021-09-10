@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import  Users from './Users';
 import {userAPI} from '../../api/api';
 import loader from '../../assets/img/oval.svg';
-import {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsersThunkCreator} from "../../redux/users-reducer";
+import {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsersThunkCreator, followThunk, unfollowThunk} from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -23,8 +23,8 @@ class UsersContainer extends React.Component {
                   currentPage = {this.props.currentPage}
                   onPageChanged = {this.onPageChanged}
                   users = {this.props.users}
-                  follow = {this.props.follow}
-                  unfollow = {this.props.unfollow}
+                  followThunk = {this.props.followThunk}
+                  unfollowThunk = {this.props.unfollowThunk}
                   toggleFollowingProgress = {this.props.toggleFollowingProgress}
                   followingInProgress = {this.props.followingInProgress}
       />
@@ -45,4 +45,4 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,
-  {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsersThunkCreator})(UsersContainer);
+  {setCurrentPage, toggleFollowingProgress, getUsersThunkCreator, followThunk, unfollowThunk})(UsersContainer);
