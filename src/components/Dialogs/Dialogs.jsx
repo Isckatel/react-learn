@@ -1,6 +1,6 @@
 import React from 'react';
 import css from "./Dialogs.module.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect } from "react-router-dom";
 
 const DialogItem = (props)=> {
   return (
@@ -32,6 +32,8 @@ const Dialogs = (props) => {
     props.updateNewMessText(newMess.current.value);
     //props.dispatch(updateNewMessTextActionCreator(newMess.current.value));
   }
+
+   if (!props.isAuth) return <Redirect to={'/login'} />;
 
   return(
     <div className={css.dialogs}>
