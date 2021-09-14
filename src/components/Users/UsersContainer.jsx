@@ -4,6 +4,7 @@ import  Users from './Users';
 import {userAPI} from '../../api/api';
 import loader from '../../assets/img/oval.svg';
 import {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsersThunkCreator, followThunk, unfollowThunk} from "../../redux/users-reducer";
+import {withAuthRedirect} from '../hoc/withAuthRedirect';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -44,5 +45,5 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,
-  {setCurrentPage, toggleFollowingProgress, getUsersThunkCreator, followThunk, unfollowThunk})(UsersContainer);
+export default withAuthRedirect(connect(mapStateToProps,
+  {setCurrentPage, toggleFollowingProgress, getUsersThunkCreator, followThunk, unfollowThunk})(UsersContainer));

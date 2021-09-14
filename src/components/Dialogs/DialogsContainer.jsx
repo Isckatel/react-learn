@@ -2,23 +2,11 @@ import React from 'react';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 import {addMessActionCreator, updateNewMessTextActionCreator} from "../../redux/dialogs-reducer";
-
-// const DialogsContainer = (props) => {
-//   const addMess = ()=>{
-//     props.store.dispatch(addMessActionCreator());
-//   };
-//   const updateNewMessText = (text) => {
-//     props.store.dispatch(updateNewMessTextActionCreator(text));
-//   }
-//   return(
-//     <Dialogs updateNewMessText={updateNewMessText} addMess={addMess} messagesPage={props.store.getState().messagesPage}/>
-//   );
-// }
+import {withAuthRedirect} from '../hoc/withAuthRedirect';
 
 let mapStateToProps = (state) => {
   return {
-    messagesPage:state.messagesPage,
-    isAuth: state.auth.isAuth
+    messagesPage:state.messagesPage
   }
 }
 let mapDispatchToProps = (dispatch) => {
@@ -32,6 +20,8 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+let AuthRedirectConponent = withAuthRedirect(Dialogs);
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectConponent);
 
 export default DialogsContainer;
