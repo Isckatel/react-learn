@@ -1,5 +1,6 @@
 import css from "./Profile.module.css";
 import loader from '../../assets/img/oval.svg';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
   if (props.profile == null || props.profile == undefined) {
@@ -14,6 +15,7 @@ const ProfileInfo = (props) => {
           <div className={css.description}>
             <h3>{props.profile.fullName}</h3>
             <p>{props.profile.aboutMe}</p>
+            <ProfileStatus status={"Hello my frends"} />
             </div>
           </div>
       </div>
