@@ -1,5 +1,5 @@
 import css from "./Profile.module.css";
-import loader from '../../assets/img/oval.svg';
+import loader from '../../assets/img/oval.gif';
 import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import  Users from './Users';
 import {userAPI} from '../../api/api';
-import loader from '../../assets/img/oval.svg';
+import loader from '../../assets/img/oval.gif';
 import {follow, unfollow, setCurrentPage, toggleFollowingProgress, getUsersThunkCreator, followThunk, unfollowThunk} from "../../redux/users-reducer";
 import {withAuthRedirect} from '../hoc/withAuthRedirect';
 import {compose} from 'redux';
