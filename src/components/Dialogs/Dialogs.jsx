@@ -1,6 +1,28 @@
 import React from 'react';
 import css from "./Dialogs.module.css";
 import {NavLink, Redirect } from "react-router-dom";
+import { useFormik } from 'formik';
+
+const AddMessForm = (props) => {
+  const formik = useFormik({
+    initialValues: {
+      newPost: 'New post'
+    },
+    onSubmit: values => {
+      props.addMess(values.newPost);
+    },
+  });
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <textarea className={css.newMessage} id="newPost"
+       name="newPost"
+       value={formik.values.newPost}
+       onChange={formik.handleChange} /><br />
+      <button className={css.btnSend} type="submit">Отправить</button>
+    </form>
+  );
+}
 
 const DialogItem = (props)=> {
   return (
@@ -23,16 +45,6 @@ const Dialogs = (props) => {
 
   let newMess = React.createRef();
 
-  const addMess = ()=>{
-    props.addMess();
-    //props.dispatch(addMessActionCreator());
-  };
-
-  const updateNewMessText = () => {
-    props.updateNewMessText(newMess.current.value);
-    //props.dispatch(updateNewMessTextActionCreator(newMess.current.value));
-  }
-
    if (!props.isAuth) return <Redirect to={'/login'} />;
 
   return(
@@ -42,8 +54,7 @@ const Dialogs = (props) => {
       </div>
       <div className={css.messages}>
         {messageElements}
-        <textarea ref={newMess} value={props.messagesPage.newMessageText} onChange={updateNewMessText}></textarea>
-        <button className={css.btnSend} onClick={addMess}>Отправить</button>
+        <AddMessForm {...props} />
       </div>
 
     </div>

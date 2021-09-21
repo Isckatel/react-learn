@@ -5,7 +5,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
-export const addPostActionCreator = () => ({type: ADD_POST});
+export const addPostActionCreator = (newPost) => ({type: ADD_POST, newPost});
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile});
 export const updateNewPostTextActionCreator = (text) => {
   return { type: UPDATE_NEW_POST_TEXT, newText: text }
@@ -28,7 +28,7 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST:
       return {
         ...state,
-        postData:[...state.postData, {id:5, massage: state.newPostText}],
+        postData:[...state.postData, {id:5, massage: action.newPost}],
         newPostText:''
       }
     case UPDATE_NEW_POST_TEXT:{
@@ -62,7 +62,7 @@ export const getProfileThunk = (userId) => {
 export const getUserStatusThunk = (userId) => {
   return (dispatch) => {
     profileAPI.getStatus(userId)
-    .then(response=>{    
+    .then(response=>{
     dispatch(setStatus(response.data));
     });
   }

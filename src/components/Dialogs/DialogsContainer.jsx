@@ -15,8 +15,8 @@ let mapDispatchToProps = (dispatch) => {
     updateNewMessText: (text)=>{
       dispatch(updateNewMessTextActionCreator(text))
     },
-    addMess:()=>{
-      dispatch(addMessActionCreator())
+    addMess:(newPost)=>{
+      dispatch(addMessActionCreator(newPost))
     }
   }
 }
@@ -24,4 +24,4 @@ let mapDispatchToProps = (dispatch) => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withAuthRedirect
-)(Dialogs);  
+)(Dialogs);

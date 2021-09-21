@@ -1,29 +1,37 @@
 import React from 'react';
 import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import { useFormik } from 'formik';
+
+const AddPostForm = (props) => {
+  const formik = useFormik({
+    initialValues: {
+      newPost: 'New post'
+    },
+    onSubmit: values => {
+      props.addPost(values.newPost);
+    },
+  });
+
+  return (
+    <div className={css.newpost}>
+      <form onSubmit={formik.handleSubmit}>
+        <textarea id="newPost"
+         name="newPost"
+         onChange={formik.handleChange}
+         value={formik.values.newPost} />
+        <button  type="submit">Добавить запись</button>
+      </form>
+    </div>
+  );
+}
 
 const MyPosts = (props) => {
-  let newPostElement = React.createRef();
   let postsElem = props.postData.map ( (p) => <Post massage={p.massage}/> );
-
-  const addPost = ()=>{
-    props.addPost();
-    //props.dispatch(addPostActionCreator());
-  }
-
-  const onPostChange = ()=>{
-    props.updateNewPostText(newPostElement.current.value);
-    //props.dispatch(updateNewPostTextActionCreator(newPostElement.current.value));
-  }
 
   return(
       <div className={css.posts}>
-        <div className={css.newpost}>
-            <textarea ref={newPostElement} onChange={onPostChange}
-              value={props.newPostText} />
-            <button onClick={addPost}>Добавить запись</button>
-        </div>
+        <AddPostForm {...props} />
         {postsElem}
       </div>
   );

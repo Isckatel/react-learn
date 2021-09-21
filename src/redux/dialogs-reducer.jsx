@@ -1,7 +1,7 @@
 const ADD_MESS = 'ADD-MESS';
 const UPDATE_NEW_MESS_TEXT = 'UPDATE-NEW-MESS-TEXT';
 
-export const addMessActionCreator = () => ({type: ADD_MESS});
+export const addMessActionCreator = (newPost) => ({type: ADD_MESS, newPost});
 
 export const updateNewMessTextActionCreator = (text) => ({ type: UPDATE_NEW_MESS_TEXT, newText: text })
 
@@ -29,7 +29,7 @@ const dialogsReducer = (state = initialState, action) => {
       }
     }
     case ADD_MESS:{
-      let text = state.newMessageText
+      let text = action.newPost;
       return {
         ...state,
         newMessageText: '',
@@ -45,7 +45,7 @@ const dialogsReducer = (state = initialState, action) => {
       //   messageData: [...state.messageData]}
       // //stateCopy.messageData = [...state.messageData];
       // stateCopy.messageData.push(newMess);
-      // stateCopy.newMessageText = '';      
+      // stateCopy.newMessageText = '';
     }
     default:
       return state;

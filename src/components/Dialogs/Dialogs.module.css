@@ -51,6 +51,10 @@
   background-color: aquamarine;
 }
 
+.newMessage {
+  width: 100%;
+}
+
 .btnSend {
   width: 150px;
   margin-top: 7px;
