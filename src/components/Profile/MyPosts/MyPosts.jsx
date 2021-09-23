@@ -2,27 +2,24 @@ import React from 'react';
 import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { useFormik } from 'formik';
+import {Validation} from "./../../other/validation";
+import { Formik, Form, Field } from 'formik';
 
-const AddPostForm = (props) => {
-  const formik = useFormik({
-    initialValues: {
-      newPost: 'New post'
-    },
-    onSubmit: values => {
-      props.addPost(values.newPost);
-    },
-  });
-
+const MessForm = (props) => {
   return (
-    <div className={css.newpost}>
-      <form onSubmit={formik.handleSubmit}>
-        <textarea id="newPost"
-         name="newPost"
-         onChange={formik.handleChange}
-         value={formik.values.newPost} />
-        <button  type="submit">Добавить запись</button>
-      </form>
-    </div>
+    <Formik
+      initialValues = {{newPost: 'New post'}}
+      validationSchema={Validation}
+      onSubmit = {values => {props.addPost(values.newPost);}}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <Field name="newPost" as="textarea" className={css.newMessage + ' ' + (errors.newPost && touched.newPost ? css.errBox : null)}/>
+          {errors.newPost && touched.newPost ? <div className={css.errTxt}>{errors.newPost}</div> : null}
+          <button type="submit" className={css.btnSend}>Добавить запись</button>
+        </Form>
+      )}
+    </Formik>
   );
 }
 
@@ -31,7 +28,7 @@ const MyPosts = (props) => {
 
   return(
       <div className={css.posts}>
-        <AddPostForm {...props} />
+        <MessForm {...props} />
         {postsElem}
       </div>
   );

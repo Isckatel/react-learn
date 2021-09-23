@@ -11,3 +11,15 @@
 }
 
 .description h3 {margin: 0}
+
+.errBox {
+  border: 2px solid red;
+}
+
+.errBox:focus {
+  border: 2px solid red;
+}
+
+.errTxt {
+  color: red;
+}

@@ -2,7 +2,10 @@ import React from 'react';
 import css from "./Dialogs.module.css";
 import {NavLink, Redirect } from "react-router-dom";
 import { useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
+import {Validation} from "./../other/validation";
 
+//old form without validation
 const AddMessForm = (props) => {
   const formik = useFormik({
     initialValues: {
@@ -21,6 +24,26 @@ const AddMessForm = (props) => {
        onChange={formik.handleChange} /><br />
       <button className={css.btnSend} type="submit">Отправить</button>
     </form>
+  );
+}
+
+
+
+const MessForm = (props) => {
+  return (
+    <Formik
+      initialValues = {{newPost: 'New post'}}
+      validationSchema={Validation}
+      onSubmit = {values => {props.addMess(values.newPost);}}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <Field name="newPost" as="textarea" className={css.newMessage + ' ' + (errors.newPost && touched.newPost ? css.errBox : null)}/>
+          {errors.newPost && touched.newPost ? <div className={css.errTxt}>{errors.newPost}</div> : null}
+          <button type="submit" className={css.btnSend}>Отправить</button>
+        </Form>
+      )}
+    </Formik>
   );
 }
 
@@ -54,7 +77,7 @@ const Dialogs = (props) => {
       </div>
       <div className={css.messages}>
         {messageElements}
-        <AddMessForm {...props} />
+        <MessForm {...props} />
       </div>
 
     </div>
