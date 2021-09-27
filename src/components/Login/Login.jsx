@@ -33,7 +33,7 @@ const LoginForm = (props) => {
         onChange={formik.handleChange}  value={formik.values.email}/>
       </div>
       <div>
-        <input id='password' name='password' type='text' placeholder={"Password"}
+        <input id='password' name='password' type='password' placeholder={"Password"}
         onChange={formik.handleChange}  value={formik.values.password}  />
       </div>
       <div>

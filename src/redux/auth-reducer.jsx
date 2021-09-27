@@ -36,4 +36,27 @@ export const getAuthThank = () => {
   }
 }
 
+export const getPostAuthThank = (values) => {
+  return (dispatch)=>{
+    authAPI.postAuth(values)
+    .then(response=>{
+      if (response.data.resultCode === 0) {
+        dispatch(getAuthThank());
+      }
+    });
+  }
+}
+
+export const deleteAuthThank = ()=> {
+  return (dispatch)=>{
+    authAPI.deleteAuth()
+    .then(response=>{
+      if (response.data.resultCode === 0) {
+        // dispatch(getAuthThank());
+      }
+    });
+  }
+}
+
+
 export default authReducer;
