@@ -27,12 +27,12 @@ const authReducer = (state = initialState, action) => {
 
 export const getAuthThank = () => {
   return (dispatch)=>{
-    authAPI.getAuth()
+    return authAPI.getAuth()
     .then(data=>{
       if (data.resultCode === 0) {
         dispatch(setUserData(data.data));
       }
-    });
+    });    
   }
 }
 
